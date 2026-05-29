@@ -2,40 +2,38 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Ultimate Profile</title>
+<title>Ultimate Homepage</title>
 
 <style>
-body {
+body{
   margin:0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg,#f0f4ff,#fdf6f9);
+  font-family:sans-serif;
+  background:#eef2f7;
 }
 
-/* 헤더 */
-header {
+header{
   background:linear-gradient(90deg,#4a6fa5,#6b8dd6);
   color:white;
-  padding:25px;
+  padding:20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 
-.profile {
+.profile{
   width:100px;
   height:100px;
   border-radius:50%;
   border:3px solid white;
 }
 
-/* 메뉴 */
-nav {
+nav{
   background:#2f3e5c;
   padding:10px;
   text-align:center;
 }
 
-nav button {
+nav button{
   margin:5px;
   padding:10px 15px;
   border:none;
@@ -43,125 +41,135 @@ nav button {
   background:#ff8fab;
   color:white;
   cursor:pointer;
-  transition:0.3s;
 }
 
-nav button:hover {
-  background:#ff5d8f;
+nav button:hover{
+  background:#ff5c8a;
 }
 
-/* 창 */
-.window {
+.window{
   display:none;
   padding:30px;
 }
 
-.card {
+.card{
   background:white;
   max-width:900px;
   margin:20px auto;
   padding:25px;
   border-radius:15px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card:hover{
+  transform:translateY(-5px);
   transition:0.3s;
 }
 
-.card:hover {
-  transform:translateY(-8px);
+.bar{
+  background:#ddd;
+  border-radius:10px;
+  margin:10px 0;
 }
 
-/* 애니메이션 */
-.fade {
-  animation: fadeIn 0.7s;
-}
-
-@keyframes fadeIn {
-  from {opacity:0; transform:translateY(20px);}
-  to {opacity:1; transform:translateY(0);}
+.fill{
+  background:#4CAF50;
+  color:white;
+  padding:5px;
+  border-radius:10px;
 }
 </style>
-
 </head>
 
 <body>
 
 <header>
-  <div>
-    <h1>✨ My Smart Homepage</h1>
-    <p>부경대학교 · 사회복지학과</p>
-  </div>
-  <img src="profile.png" class="profile">
+<div>
+<h1>Ultimate Homepage</h1>
+<p>부경대학교 · 사회복지학과</p>
+</div>
+<img src="profile.png" class="profile">
 </header>
 
 <nav>
-  <button onclick="openWin('home')">🏠 홈</button>
-  <button onclick="openWin('weather')">🌤 날씨</button>
-  <button onclick="openWin('news')">📰 뉴스</button>
-  <button onclick="openWin('data')">📊 통계</button>
+<button onclick="openWin('home')">홈</button>
+<button onclick="openWin('weather')">날씨</button>
+<button onclick="openWin('news')">뉴스</button>
+<button onclick="openWin('data')">통계</button>
 </nav>
 
 <!-- 홈 -->
-<div id="home" class="window fade">
-  <div class="card">
-    <h2>👋 소개</h2>
-    <p>안녕하세요 😊 사회복지를 공부하는 학생입니다.</p>
-  </div>
-
-  <div class="card">
-    <h2>💡 관심 분야</h2>
-    <p>아동복지 / 상담 / 정책</p>
-  </div>
+<div id="home" class="window">
+<div class="card">
+<h2>소개</h2>
+<p>안녕하세요 😊 업그레이드된 홈페이지입니다!</p>
+</div>
 </div>
 
 <!-- 날씨 -->
-<div id="weather" class="window fade">
-  <div class="card">
-    <h2>🌤 날씨</h2>
-    <p id="weatherBox">불러오는 중...</p>
-  </div>
+<div id="weather" class="window">
+<div class="card">
+<h2>날씨</h2>
+<p id="weatherBox">불러오는 중...</p>
+</div>
 </div>
 
 <!-- 뉴스 -->
-<div id="news" class="window fade">
-  <div class="card">
-    <h2>📰 뉴스</h2>
-    <ul id="newsList"></ul>
-  </div>
+<div id="news" class="window">
+<div class="card">
+<h2>뉴스</h2>
+<ul id="newsList"></ul>
+</div>
 </div>
 
-<!-- 통계 -->
-<div id="data" class="window fade">
-  <div class="card">
-    <h2>📊 사회복지 통계</h2>
-    <p>아동복지 이용률: 65%</p>
-    <p>노인복지 이용률: 80%</p>
-    <p>장애인복지 이용률: 55%</p>
-  </div>
+<!-- 통계 (🔥 ESG 포함 핵심) -->
+<div id="data" class="window">
+<div class="card">
+
+<h2>📊 부산 ESG 경영 통계</h2>
+
+<h3>1. 기업 구조</h3>
+<p>부산 제조업 기업 수: 약 35,000개</p>
+<p>중소기업 비율: 약 99%</p>
+
+<h3>2. ESG 도입 현황</h3>
+<p>타 지역 대비 ESG 수준: 초기 단계</p>
+<div class="bar"><div class="fill" style="width:60%">도입률 60%</div></div>
+
+<h3>3. ESG 선도 기업</h3>
+<p>2025년 기준 24개 기업 선정</p>
+<div class="bar"><div class="fill" style="width:70%">성장률 70%</div></div>
+
+<h3>4. 공공기관 목표</h3>
+<p>미세먼지 감축: 40%</p>
+<p>일자리 창출: 40,000개</p>
+
+<h3>5. 핵심 키워드</h3>
+<p>#탄소중립 #사회적책임 #지속가능성 #투명경영</p>
+
+</div>
 </div>
 
 <script>
 function openWin(id){
   document.querySelectorAll('.window').forEach(w=>w.style.display='none');
-  const target = document.getElementById(id);
-  target.style.display='block';
-  target.classList.add('fade');
+  document.getElementById(id).style.display='block';
 }
+
 openWin('home');
 
 /* 날씨 */
 setTimeout(()=>{
-  document.getElementById("weatherBox").innerHTML =
-  "부산 🌞 24°C / 서울 ☁️ 22°C";
-},800);
+  document.getElementById("weatherBox").innerHTML="부산 ☀ 24°C 맑음";
+},1000);
 
 /* 뉴스 */
 setTimeout(()=>{
-  document.getElementById("newsList").innerHTML = `
-    <li>부경대 취업 프로그램 확대</li>
-    <li>부산 복지 정책 강화</li>
-    <li>청년 지원 사업 증가</li>
-  `;
-},800);
+  document.getElementById("newsList").innerHTML=
+  "<li>부경대학교 최신 소식</li>" +
+  "<li>부산 ESG 정책 확대</li>" +
+  "<li>사회복지 통계 증가 추세</li>";
+},1000);
 </script>
 
 </body>
