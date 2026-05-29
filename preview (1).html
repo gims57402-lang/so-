@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>소현이의 사회복지 홈페이지</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Pretendard', sans-serif;
+    }
+
+    body{
+      background:#f4eee8;
+      overflow-x:hidden;
+      color:#222;
+    }
+
+    .hero{
+      position:relative;
+      width:100%;
+      min-height:100vh;
+      background:
+      linear-gradient(rgba(255,255,255,0.15), rgba(255,255,255,0.3)),
+      url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      padding:40px;
+    }
+
+    .animal{
+      position:absolute;
+      color:#ff4fa3;
+      font-size:50px;
+      opacity:0.85;
+      animation:float 6s infinite ease-in-out;
+      user-select:none;
+    }
+
+    @keyframes float{
+      0%{ transform:translateY(0px);}
+      50%{ transform:translateY(-10px);}
+      100%{ transform:translateY(0px);}
+    }
+
+    .container{
+      position:relative;
+      z-index:10;
+      max-width:1300px;
+      margin:auto;
+    }
+
+    .title-box{
+      backdrop-filter:blur(10px);
+      background:rgba(255,255,255,0.45);
+      border:1px solid rgba(255,255,255,0.4);
+      border-radius:30px;
+      padding:40px;
+      margin-top:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    h1{
+      font-size:3rem;
+      color:#ff3f94;
+      margin-bottom:10px;
+    }
+
+    .subtitle{
+      font-size:1.1rem;
+      color:#444;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:25px;
+      margin-top:35px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.6);
+      backdrop-filter:blur(12px);
+      border-radius:28px;
+      padding:28px;
+      box-shadow:0 8px 25px rgba(0,0,0,0.08);
+      border:1px solid rgba(255,255,255,0.5);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+    }
+
+    .card h2{
+      color:#ff4fa3;
+      margin-bottom:18px;
+      font-size:1.4rem;
+    }
+
+    .weather{
+      text-align:center;
+    }
+
+    .temp{
+      font-size:4rem;
+      font-weight:700;
+      color:#ff4fa3;
+    }
+
+    .weather-desc{
+      font-size:1.1rem;
+      margin-top:10px;
+    }
+
+    ul{
+      list-style:none;
+    }
+
+    li{
+      margin-bottom:14px;
+      line-height:1.6;
+      padding-left:12px;
+      border-left:3px solid #ff79b7;
+    }
+
+    .footer{
+      text-align:center;
+      margin-top:50px;
+      padding:20px;
+      color:#444;
+      font-size:0.95rem;
+    }
+
+    canvas{
+      margin-top:10px;
+    }
+
+    .news-tag{
+      display:inline-block;
+      background:#ffd5e8;
+      color:#ff3f94;
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:0.8rem;
+      margin-bottom:10px;
+    }
+
+    @media(max-width:768px){
+      h1{
+        font-size:2.1rem;
+      }
+
+      .hero{
+        padding:20px;
+      }
+
+      .title-box{
+        padding:25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="hero">
+
+    <div class="animal" style="top:10%; left:8%;">🐕</div>
+    <div class="animal" style="top:15%; left:28%;">🐎</div>
+    <div class="animal" style="top:8%; left:55%;">🐕</div>
+    <div class="animal" style="top:30%; left:18%;">🦌</div>
+    <div class="animal" style="top:38%; left:48%;">🐕</div>
+    <div class="animal" style="top:25%; left:75%;">🐎</div>
+    <div class="animal" style="top:55%; left:12%;">🐕</div>
+    <div class="animal" style="top:62%; left:40%;">🦌</div>
+    <div class="animal" style="top:70%; left:65%;">🐕</div>
+
+    <div class="container">
+
+      <div class="title-box">
+        <h1>소현이의 사회복지 홈페이지</h1>
+        <p class="subtitle">
+          부산 지역 정보 · 부경대 뉴스 · 사회복지 통계 플랫폼
+        </p>
+      </div>
+
+      <div class="grid">
+
+        <div class="card weather">
+          <h2>☁ 오늘의 부산 날씨</h2>
+          <div class="temp">23°</div>
+          <div class="weather-desc">
+            맑음 · 미세먼지 보통<br><br>
+            부산광역시 기준 실시간 날씨 정보
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="news-tag">BUSAN ISSUE</span>
+          <h2>🔥 부산 지역 이슈</h2>
+
+          <ul>
+            <li>부산 청년 주거 지원 정책 확대 발표</li>
+            <li>해운대 관광 활성화 프로젝트 추진</li>
+            <li>노인 돌봄 서비스 예산 증액 예정</li>
+            <li>부산 지역 복지기관 채용 증가</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <span class="news-tag">PKNU NEWS</span>
+          <h2>🎓 부경대 관련 뉴스</h2>
+
+          <ul>
+            <li>부경대 사회복지학과 지역 연계 프로그램 운영</li>
+            <li>학생 복지 지원 사업 확대</li>
+            <li>부산 지역사회 협력 프로젝트 진행</li>
+            <li>청년 복지 연구 세미나 개최</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <span class="news-tag">WELFARE DATA</span>
+          <h2>📊 사회복지 통계</h2>
+
+          <canvas id="welfareChart"></canvas>
+        </div>
+
+      </div>
+
+      <div class="footer">
+        © 2026 소현이의 사회복지 홈페이지 · GitHub Pages 기반
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    const ctx = document.getElementById('welfareChart');
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['노인복지', '청년복지', '장애인복지', '아동복지'],
+        datasets: [{
+          label: '복지 만족도',
+          data: [82, 67, 75, 88],
+          borderWidth: 1,
+          borderRadius: 12
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: true
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max:100
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
