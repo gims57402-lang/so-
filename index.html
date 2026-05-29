@@ -2,224 +2,183 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Ultimate 2026 ss 패션 트렌드를 알려줄게 나만 따라와!</title>
+<title>💖 MyScene World 💖</title>
 
 <style>
 body{
   margin:0;
-  font-family:'Segoe UI',sans-serif;
-  background:linear-gradient(135deg,#667eea,#764ba2);
-  color:white;
+  font-family: "Comic Sans MS";
+  background: linear-gradient(#ffb6c1,#ff69b4);
+  overflow:hidden;
 }
 
-/* 헤더 */
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 40px;
-}
-
-.profile{
-  width:80px;
-  height:80px;
-  border-radius:50%;
-  border:2px solid white;
-}
-
-/* 메뉴 */
-nav{
+/* 메인 */
+#main{
   text-align:center;
+  height:100vh;
 }
 
-nav button{
-  margin:10px;
-  padding:12px 20px;
-  border:none;
-  border-radius:30px;
-  background:rgba(255,255,255,0.2);
-  color:white;
-  font-weight:bold;
+#main img{
+  width:500px;
+  margin-top:120px;
   cursor:pointer;
-  transition:0.3s;
+  animation:float 2s infinite alternate;
 }
 
-nav button:hover{
-  background:#ff4ecd;
-  transform:scale(1.1);
+@keyframes float{
+  from{transform:translateY(0);}
+  to{transform:translateY(-20px);}
 }
 
 /* 창 */
 .window{
+  position:absolute;
+  width:75%;
+  height:75%;
+  top:12%;
+  left:12%;
+  background:#fff0f5;
+  border-radius:20px;
+  box-shadow:0 0 40px rgba(0,0,0,0.4);
   display:none;
-  padding:40px;
+  overflow:auto;
+}
+
+/* 헤더 */
+.header{
+  background:linear-gradient(#ff69b4,#ffa6c9);
+  padding:10px;
+  font-weight:bold;
+}
+
+.close{
+  float:right;
+  cursor:pointer;
 }
 
 /* 카드 */
 .card{
-  max-width:900px;
-  margin:20px auto;
-  padding:30px;
-  border-radius:20px;
-  background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(15px);
+  background:white;
+  margin:15px;
+  padding:15px;
+  border-radius:15px;
 }
 
-/* ESG 그래프 */
-.chart{
-  display:flex;
-  justify-content:space-around;
-  align-items:flex-end;
-  height:200px;
-}
-
-.bar{
-  width:60px;
-  border-radius:10px;
-  text-align:center;
-  color:white;
-  font-size:12px;
-}
-
-/* 뉴스 */
-ul li{
-  margin:10px 0;
+/* 버튼 */
+.button{
   padding:10px;
-  background:rgba(255,255,255,0.1);
-  border-radius:10px;
+  margin:10px;
+  border:none;
+  background:#ff69b4;
+  color:white;
+  border-radius:15px;
+  cursor:pointer;
+}
+
+/* 그래프 */
+.bar{
+  height:20px;
+  background:#ff69b4;
+  margin:5px 0;
+}
+
+/* 캐릭터 */
+.character{
+  text-align:center;
+}
+
+.character img{
+  width:300px;
 }
 </style>
+
 </head>
 
 <body>
 
-<header>
-<div>
-<h1>🌟 Premium Homepage</h1>
-<p>부경대학교 · 사회복지학과</p>
-</div>
-<img src="profile.png" class="profile">
-</header>
-
-<nav>
-<button onclick="openWin('home')">🏠 홈</button>
-<button onclick="openWin('weather')">🌤 날씨</button>
-<button onclick="openWin('news')">📰 뉴스</button>
-<button onclick="openWin('data')">📊 ESG</button>
-<button onclick="openWin('fashion')">👗 패션</button>
-</nav>
-
-<!-- 홈 -->
-<div id="home" class="window">
-<div class="card">
-<h2>✨ 소개</h2>
-<p>부산 · ESG · 뉴스 · 패션 트렌드를 한눈에 보는 플랫폼</p>
-</div>
+<!-- 💖 메인 -->
+<div id="main">
+  <img src="image(2).png" onclick="openWin('fashion')">
+  <h1>💖 Click 💖</h1>
 </div>
 
-<!-- 날씨 -->
-<div id="weather" class="window">
-<div class="card">
-<h2>🌤 부산 날씨</h2>
-<p id="weatherBox">불러오는 중...</p>
-</div>
-</div>
-
-<!-- 뉴스 -->
-<div id="news" class="window">
-<div class="card">
-<h2>📰 최신 뉴스</h2>
-<ul>
-<li>부경대 ESG 기반 교육 프로그램 확대</li>
-<li>부산 ESG 환경 정책 및 워크숍 개최</li>
-<li>부경대 해양수산 인재 양성 사업 선정</li>
-</ul>
-</div>
-</div>
-
-<!-- ESG -->
-<div id="data" class="window">
-<div class="card">
-
-<h2>📊 부산 ESG 통계</h2>
-
-<div class="chart">
-  <div>
-    <div class="bar" style="height:120px;background:#00f2fe;">60%</div>
-    <p>도입률</p>
-  </div>
-  
-  <div>
-    <div class="bar" style="height:150px;background:#4facfe;">70%</div>
-    <p>성장률</p>
-  </div>
-
-  <div>
-    <div class="bar" style="height:200px;background:#43e97b;">99%</div>
-    <p>중소기업</p>
-  </div>
-</div>
-
-<p>✔ ESG는 부산에서 빠르게 성장 중</p>
-
-</div>
-</div>
-
-<!-- 패션 -->
+<!-- 👗 패션 -->
 <div id="fashion" class="window">
-<div class="card">
-
-<h2>👗 2026 SS 패션 트렌드</h2>
-
-<h3>🎨 컬러</h3>
-<div class="chart">
-
-  <div>
-    <div class="bar" style="height:160px;background:red;">RED</div>
-    <p>비비드 레드</p>
+  <div class="header">
+    💖 2026 SS 패션 트렌드 💖
+    <span class="close" onclick="closeWin('fashion')">X</span>
   </div>
 
-  <div>
-    <div class="bar" style="height:180px;background:#008080;">TEAL</div>
-    <p>틸 컬러</p>
+  <div class="card">
+    <h2>🎀 컬러</h2>
+    <p>베이비핑크 / 실버 / 라벤더 / 틸</p>
   </div>
 
-  <div>
-    <div class="bar" style="height:140px;background:gold;">YELLOW</div>
-    <p>버터 옐로우</p>
+  <div class="card">
+    <h2>🌀 패턴</h2>
+    <p>글리치 / 홀로그램 / 플라워 / 컬러블록</p>
   </div>
 
-  <div>
-    <div class="bar" style="height:120px;background:brown;">BROWN</div>
-    <p>모카 브라운</p>
+  <div class="card">
+    <h2>👕 스타일</h2>
+    <p>크롭탑 · 로우라이즈 · Y2K 감성</p>
   </div>
 
+  <!-- 캐릭터 -->
+  <div class="character">
+    <img src="f11fd78f725ad200df968a327101cb94(1).jpg">
+  </div>
+
+  <button class="button" onclick="openWin('info')">
+    👉 부산 정보 보기
+  </button>
 </div>
 
-<h3>🧵 패턴</h3>
-<ul>
-<li>🌸 그래픽 플라워 패턴</li>
-<li>🟥 컬러 블록 스타일</li>
-<li>✔ 밝은 체크 패턴</li>
-</ul>
+<!-- 🌊 정보 -->
+<div id="info" class="window">
+  <div class="header">
+    🌊 부산 정보 🌊
+    <span class="close" onclick="closeWin('info')">X</span>
+  </div>
 
-<p>✔ 강렬한 색감 + 자연톤 혼합 트렌드</p>
+  <div class="card">
+    <h2>🌤 날씨</h2>
+    <p>부산 ☀ 26°C 맑음</p>
+  </div>
 
-</div>
+  <div class="card">
+    <h2>📰 뉴스</h2>
+    <ul>
+      <li><a href="https://www.yna.co.kr" target="_blank">연합뉴스 바로가기</a></li>
+      <li><a href="https://www.bbc.com" target="_blank">BBC 뉴스</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>📊 ESG</h2>
+    삼성 80%
+    <div class="bar" style="width:80%"></div>
+    LG 70%
+    <div class="bar" style="width:70%"></div>
+    스타트업 60%
+    <div class="bar" style="width:60%"></div>
+  </div>
+
+  <div class="card">
+    <h2>📈 사회복지</h2>
+    <p>청년 지원 정책 증가</p>
+  </div>
+
 </div>
 
 <script>
 function openWin(id){
-  document.querySelectorAll('.window').forEach(w=>w.style.display='none');
-  document.getElementById(id).style.display='block';
+  document.getElementById(id).style.display="block";
 }
 
-openWin('home');
-
-/* 날씨 */
-setTimeout(()=>{
-  document.getElementById("weatherBox").innerHTML="부산 ☀ 24°C 맑음";
-},1000);
+function closeWin(id){
+  document.getElementById(id).style.display="none";
+}
 </script>
 
 </body>
