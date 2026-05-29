@@ -10,59 +10,6 @@ body{
   font-family:'Segoe UI',sans-serif;
   background:linear-gradient(135deg,#667eea,#764ba2);
   color:white;
-  overflow-x:hidden;
-}
-
-/* 헤더 */
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 40px;
-  backdrop-filter:blur(10px);
-}
-
-.profile{
-  width:80px;
-  height:80px;
-  border-radius:50%;
-  border:2px solid white;
-}
-
-/* 메뉴 */
-nav{
-  text-align:center;
-  margin-top:10px;
-}
-
-nav button{
-  margin:10px;
-  padding:12px 20px;
-  border:none;
-  border-radius:30px;
-  background:rgba(255,255,255,0.2);
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
-  backdrop-filter:blur(10px);
-  transition:0.3s;
-}
-
-nav button:hover{
-  background:#ff4ecd;
-  transform:scale(1.1);
-}
-
-/* 윈도우 */
-.window{
-  display:none;
-  padding:40px;
-  animation:fade 0.5s;
-}
-
-@keyframes fade{
-  from{opacity:0; transform:translateY(20px);}
-  to{opacity:1; transform:translateY(0);}
 }
 
 /* 카드 */
@@ -73,109 +20,96 @@ nav button:hover{
   border-radius:20px;
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(15px);
-  box-shadow:0 10px 30px rgba(0,0,0,0.3);
-  transition:0.3s;
 }
 
-.card:hover{
-  transform:translateY(-10px) scale(1.02);
+/* 버튼 */
+nav{text-align:center;}
+nav button{
+  margin:10px;
+  padding:12px 20px;
+  border:none;
+  border-radius:30px;
+  background:rgba(255,255,255,0.2);
+  color:white;
+  cursor:pointer;
 }
 
 /* 그래프 */
+.chart{
+  display:flex;
+  justify-content:space-around;
+  align-items:flex-end;
+  height:200px;
+}
+
 .bar{
-  background:rgba(255,255,255,0.2);
-  border-radius:10px;
-  margin:10px 0;
-}
-
-.fill{
-  background:linear-gradient(90deg,#00f2fe,#4facfe);
-  padding:6px;
-  border-radius:10px;
-  font-size:12px;
-}
-
-/* 뉴스 */
-ul li{
-  margin:10px 0;
-  padding:10px;
-  background:rgba(255,255,255,0.1);
+  width:60px;
+  background:linear-gradient(to top,#00f2fe,#4facfe);
+  text-align:center;
   border-radius:10px;
 }
 
-/* 타이틀 */
-h1{
-  font-size:28px;
-}
-
-h2{
-  border-bottom:2px solid rgba(255,255,255,0.3);
-  padding-bottom:5px;
-}
+/* 창 */
+.window{display:none;}
 </style>
 </head>
 
 <body>
 
-<header>
-<div>
-<h1>🌟 Premium Homepage</h1>
-<p>부경대학교 · 사회복지학과</p>
-</div>
-<img src="profile.png" class="profile">
-</header>
+<h1 style="text-align:center;">🌟 부산 ESG & 뉴스 플랫폼</h1>
 
 <nav>
-<button onclick="openWin('home')">🏠 홈</button>
-<button onclick="openWin('weather')">🌤 날씨</button>
-<button onclick="openWin('news')">📰 뉴스</button>
-<button onclick="openWin('data')">📊 통계</button>
+<button onclick="openWin('home')">홈</button>
+<button onclick="openWin('news')">뉴스</button>
+<button onclick="openWin('data')">ESG</button>
 </nav>
 
 <!-- 홈 -->
 <div id="home" class="window">
 <div class="card">
-<h2>✨ 소개</h2>
-<p>눈길을 사로잡는 프리미엄 홈페이지 🚀</p>
-<p>ESG · 뉴스 · 날씨를 한눈에 확인하세요</p>
+<h2>소개</h2>
+<p>부산 · ESG · 부경대 정보를 한눈에</p>
 </div>
 </div>
 
-<!-- 날씨 -->
-<div id="weather" class="window">
-<div class="card">
-<h2>🌤 부산 날씨</h2>
-<p id="weatherBox">불러오는 중...</p>
-</div>
-</div>
-
-<!-- 뉴스 -->
+<!-- 뉴스 (🔥 실제 뉴스 적용) -->
 <div id="news" class="window">
 <div class="card">
 <h2>📰 최신 뉴스</h2>
-<ul id="newsList"></ul>
+
+<ul>
+<li>부경대, ESG 기반 교육 프로그램 운영 확대</li>
+<li>부산 환경산업 ESG 워크숍 개최</li>
+<li>부경대, 해양수산 전문인력 양성사업 선정</li>
+</ul>
+
 </div>
 </div>
 
-<!-- 통계 -->
+<!-- ESG (🔥 그래프 버전) -->
 <div id="data" class="window">
 <div class="card">
 
-<h2>📊 부산 ESG 통계</h2>
+<h2>📊 부산 ESG 통계 (그래프)</h2>
 
-<h3>기업 구조</h3>
-<p>중소기업 비율 99%</p>
-<div class="bar"><div class="fill" style="width:99%">99%</div></div>
+<div class="chart">
+  <div>
+    <div class="bar" style="height:120px;">60%</div>
+    <p>ESG 도입</p>
+  </div>
+  
+  <div>
+    <div class="bar" style="height:150px;">70%</div>
+    <p>성장률</p>
+  </div>
 
-<h3>ESG 도입률</h3>
-<div class="bar"><div class="fill" style="width:60%">60%</div></div>
+  <div>
+    <div class="bar" style="height:200px;">99%</div>
+    <p>중소기업</p>
+  </div>
+</div>
 
-<h3>ESG 성장률</h3>
-<div class="bar"><div class="fill" style="width:70%">70%</div></div>
-
-<h3>공공 목표</h3>
-<p>미세먼지 40% 감소</p>
-<p>일자리 40,000개 창출</p>
+<p>✔ ESG는 부산에서 빠르게 성장 중</p>
 
 </div>
 </div>
@@ -185,21 +119,7 @@ function openWin(id){
   document.querySelectorAll('.window').forEach(w=>w.style.display='none');
   document.getElementById(id).style.display='block';
 }
-
 openWin('home');
-
-/* 날씨 */
-setTimeout(()=>{
-  document.getElementById("weatherBox").innerHTML="부산 ☀ 24°C 맑음";
-},1000);
-
-/* 뉴스 */
-setTimeout(()=>{
-  document.getElementById("newsList").innerHTML=
-  "<li>부경대학교 최신 소식</li>" +
-  "<li>부산 ESG 정책 확대</li>" +
-  "<li>사회복지 통계 증가</li>";
-},1000);
 </script>
 
 </body>
