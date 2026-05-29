@@ -1,185 +1,172 @@
-<!DOCTYPE html>
+data:text/html;charset=utf-8,<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>💖 MyScene World 💖</title>
+<title>Y2K MySpace Page</title>
 
 <style>
 body{
-  margin:0;
-  font-family: "Comic Sans MS";
-  background: linear-gradient(#ffb6c1,#ff69b4);
-  overflow:hidden;
+ margin:0;
+ font-family:cursive;
+ background:linear-gradient(pink, hotpink);
+ overflow-x:hidden;
+ cursor:url('https://cur.cursors-4u.net/cursors/cur-13/cur1140.cur'),auto;
 }
 
-/* 메인 */
-#main{
-  text-align:center;
-  height:100vh;
+/* 메뉴 */
+.menu{
+ background:#ff69b4;
+ padding:12px;
+ text-align:center;
+ box-shadow:0 0 20px white;
+ position:sticky;
+ top:0;
 }
 
-#main img{
-  width:500px;
-  margin-top:120px;
-  cursor:pointer;
-  animation:float 2s infinite alternate;
+.menu button{
+ margin:5px;
+ padding:10px 15px;
+ border-radius:20px;
+ border:2px solid white;
+ background:pink;
+ cursor:pointer;
+ font-weight:bold;
 }
 
-@keyframes float{
-  from{transform:translateY(0);}
-  to{transform:translateY(-20px);}
+/* 페이지 */
+.page{display:none; padding:30px;}
+.active{display:block;}
+
+h1{
+ text-align:center;
+ color:white;
+ text-shadow:0 0 10px #fff,0 0 20px hotpink;
 }
 
-/* 창 */
-.window{
-  position:absolute;
-  width:75%;
-  height:75%;
-  top:12%;
-  left:12%;
-  background:#fff0f5;
-  border-radius:20px;
-  box-shadow:0 0 40px rgba(0,0,0,0.4);
-  display:none;
-  overflow:auto;
-}
+.center{text-align:center;}
 
-/* 헤더 */
-.header{
-  background:linear-gradient(#ff69b4,#ffa6c9);
-  padding:10px;
-  font-weight:bold;
-}
-
-.close{
-  float:right;
-  cursor:pointer;
-}
-
-/* 카드 */
 .card{
-  background:white;
-  margin:15px;
-  padding:15px;
-  border-radius:15px;
+ background:rgba(255,255,255,0.3);
+ padding:20px;
+ border-radius:20px;
+ margin:20px auto;
+ width:80%;
+ box-shadow:0 0 15px white;
 }
 
-/* 버튼 */
-.button{
-  padding:10px;
-  margin:10px;
-  border:none;
-  background:#ff69b4;
-  color:white;
-  border-radius:15px;
-  cursor:pointer;
+/* 이미지 */
+img{
+ max-width:80%;
+ border-radius:20px;
+ box-shadow:0 0 20px white;
 }
 
-/* 그래프 */
-.bar{
-  height:20px;
-  background:#ff69b4;
-  margin:5px 0;
+/* 반짝이 */
+.sparkle{
+ position:fixed;
+ width:6px;
+ height:6px;
+ background:white;
+ border-radius:50%;
+ pointer-events:none;
+ animation:fade 1s linear forwards;
 }
 
-/* 캐릭터 */
-.character{
-  text-align:center;
-}
-
-.character img{
-  width:300px;
+@keyframes fade{
+ to{opacity:0; transform:scale(2);}
 }
 </style>
+
+<script>
+function showPage(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+}
+
+/* 반짝이 효과 */
+document.addEventListener('mousemove', function(e){
+ let s=document.createElement('div');
+ s.className='sparkle';
+ s.style.left=e.pageX+'px';
+ s.style.top=e.pageY+'px';
+ document.body.appendChild(s);
+ setTimeout(()=>s.remove(),800);
+});
+</script>
 
 </head>
 
 <body>
 
-<!-- 💖 메인 -->
-<div id="main">
-  <img src="image(2).png" onclick="openWin('fashion')">
-  <h1>💖 Click 💖</h1>
+<div class="menu">
+<button onclick="showPage('main')">💖 Main</button>
+<button onclick="showPage('fashion')">👗 Fashion</button>
+<button onclick="showPage('busan')">🌊 Busan</button>
+<button onclick="showPage('news')">📰 PKNU</button>
+<button onclick="showPage('welfare')">📊 Welfare</button>
 </div>
 
-<!-- 👗 패션 -->
-<div id="fashion" class="window">
-  <div class="header">
-    💖 2026 SS 패션 트렌드 💖
-    <span class="close" onclick="closeWin('fashion')">X</span>
-  </div>
+<!-- 메인 -->
+<div id="main" class="page active center">
+<h1>Welcome to my page!</h1>
 
-  <div class="card">
-    <h2>🎀 컬러</h2>
-    <p>베이비핑크 / 실버 / 라벤더 / 틸</p>
-  </div>
-
-  <div class="card">
-    <h2>🌀 패턴</h2>
-    <p>글리치 / 홀로그램 / 플라워 / 컬러블록</p>
-  </div>
-
-  <div class="card">
-    <h2>👕 스타일</h2>
-    <p>크롭탑 · 로우라이즈 · Y2K 감성</p>
-  </div>
-
-  <!-- 캐릭터 -->
-  <div class="character">
-    <img src="f11fd78f725ad200df968a327101cb94(1).jpg">
-  </div>
-
-  <button class="button" onclick="openWin('info')">
-    👉 부산 정보 보기
-  </button>
+<div class="card">
+<p>💿 Y2K 감성 홈페이지 💿</p>
+<p>✨ 반짝이 + 마이스페이스 스타일 ✨</p>
 </div>
-
-<!-- 🌊 정보 -->
-<div id="info" class="window">
-  <div class="header">
-    🌊 부산 정보 🌊
-    <span class="close" onclick="closeWin('info')">X</span>
-  </div>
-
-  <div class="card">
-    <h2>🌤 날씨</h2>
-    <p>부산 ☀ 26°C 맑음</p>
-  </div>
-
-  <div class="card">
-    <h2>📰 뉴스</h2>
-    <ul>
-      <li><a href="https://www.yna.co.kr" target="_blank">연합뉴스 바로가기</a></li>
-      <li><a href="https://www.bbc.com" target="_blank">BBC 뉴스</a></li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>📊 ESG</h2>
-    삼성 80%
-    <div class="bar" style="width:80%"></div>
-    LG 70%
-    <div class="bar" style="width:70%"></div>
-    스타트업 60%
-    <div class="bar" style="width:60%"></div>
-  </div>
-
-  <div class="card">
-    <h2>📈 사회복지</h2>
-    <p>청년 지원 정책 증가</p>
-  </div>
 
 </div>
 
-<script>
-function openWin(id){
-  document.getElementById(id).style.display="block";
-}
+<!-- 패션 -->
+<div id="fashion" class="page center">
+<h1>2026 SS 패션 트렌드</h1>
 
-function closeWin(id){
-  document.getElementById(id).style.display="none";
-}
-</script>
+<div class="card">
+<p>💖 Y2K + 로우라이즈 + 메탈릭</p>
+<p>💿 실버, 핑크, 글리터 컬러 유행</p>
+<p>👗 키워드: 슬림핏 / 크롭 / 레이어드</p>
+</div>
+
+<!-- 👉 이미지 (이미 포함됨) -->
+<img src="https://i.imgur.com/8Km9tLL.png">
+
+</div>
+
+<!-- 부산 -->
+<div id="busan" class="page">
+<h1>부산 날씨 & 이슈</h1>
+
+<div class="card">
+<p>🌞 오늘 날씨: 맑음 / 23도</p>
+<p>🌊 해운대 관광객 증가</p>
+<p>🎆 지역 축제 활성화</p>
+</div>
+
+</div>
+
+<!-- 뉴스 -->
+<div id="news" class="page">
+<h1>부경대 뉴스</h1>
+
+<div class="card">
+<p>📢 캠퍼스 시설 개선 진행</p>
+<p>📚 학생 참여 프로그램 확대</p>
+<p>🎓 취업 지원 강화</p>
+</div>
+
+</div>
+
+<!-- 복지 -->
+<div id="welfare" class="page">
+<h1>사회복지 통계</h1>
+
+<div class="card">
+<p>📊 청년 복지 수요 증가</p>
+<p>👶 아동 지원 정책 확대</p>
+<p>👵 노인 복지 서비스 강화</p>
+</div>
+
+</div>
 
 </body>
 </html>
