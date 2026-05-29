@@ -2,15 +2,13 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Smart Profile</title>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<title>Ultimate Profile</title>
 
 <style>
 body {
   margin:0;
-  font-family:'Segoe UI', sans-serif;
-  background:#eef2f7;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg,#f0f4ff,#fdf6f9);
 }
 
 /* 헤더 */
@@ -27,7 +25,6 @@ header {
   width:100px;
   height:100px;
   border-radius:50%;
-  object-fit:cover;
   border:3px solid white;
 }
 
@@ -46,6 +43,11 @@ nav button {
   background:#ff8fab;
   color:white;
   cursor:pointer;
+  transition:0.3s;
+}
+
+nav button:hover {
+  background:#ff5d8f;
 }
 
 /* 창 */
@@ -54,19 +56,28 @@ nav button {
   padding:30px;
 }
 
-/* 카드 */
 .card {
   background:white;
   max-width:900px;
   margin:20px auto;
   padding:25px;
   border-radius:15px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
   transition:0.3s;
 }
 
 .card:hover {
-  transform:translateY(-5px);
+  transform:translateY(-8px);
+}
+
+/* 애니메이션 */
+.fade {
+  animation: fadeIn 0.7s;
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(20px);}
+  to {opacity:1; transform:translateY(0);}
 }
 </style>
 
@@ -76,7 +87,7 @@ nav button {
 
 <header>
   <div>
-    <h1>My Smart Homepage</h1>
+    <h1>✨ My Smart Homepage</h1>
     <p>부경대학교 · 사회복지학과</p>
   </div>
   <img src="profile.png" class="profile">
@@ -90,74 +101,67 @@ nav button {
 </nav>
 
 <!-- 홈 -->
-<div id="home" class="window">
+<div id="home" class="window fade">
   <div class="card">
     <h2>👋 소개</h2>
     <p>안녕하세요 😊 사회복지를 공부하는 학생입니다.</p>
   </div>
+
+  <div class="card">
+    <h2>💡 관심 분야</h2>
+    <p>아동복지 / 상담 / 정책</p>
+  </div>
 </div>
 
-<!-- 날씨 (실시간 느낌) -->
-<div id="weather" class="window">
+<!-- 날씨 -->
+<div id="weather" class="window fade">
   <div class="card">
-    <h2>🌤 현재 날씨</h2>
-    <p id="weatherBox">날씨 불러오는 중...</p>
+    <h2>🌤 날씨</h2>
+    <p id="weatherBox">불러오는 중...</p>
   </div>
 </div>
 
 <!-- 뉴스 -->
-<div id="news" class="window">
+<div id="news" class="window fade">
   <div class="card">
-    <h2>📰 부경대 & 부산 뉴스</h2>
-    <ul id="newsList">
-      <li>뉴스 불러오는 중...</li>
-    </ul>
+    <h2>📰 뉴스</h2>
+    <ul id="newsList"></ul>
   </div>
 </div>
 
 <!-- 통계 -->
-<div id="data" class="window">
+<div id="data" class="window fade">
   <div class="card">
     <h2>📊 사회복지 통계</h2>
-    <canvas id="chart"></canvas>
+    <p>아동복지 이용률: 65%</p>
+    <p>노인복지 이용률: 80%</p>
+    <p>장애인복지 이용률: 55%</p>
   </div>
 </div>
 
 <script>
 function openWin(id){
   document.querySelectorAll('.window').forEach(w=>w.style.display='none');
-  document.getElementById(id).style.display='block';
+  const target = document.getElementById(id);
+  target.style.display='block';
+  target.classList.add('fade');
 }
 openWin('home');
 
-/* 🌤 날씨 (가짜 API 느낌) */
+/* 날씨 */
 setTimeout(()=>{
   document.getElementById("weatherBox").innerHTML =
-    "부산 🌞 24°C / 서울 ☁️ 22°C";
-},1000);
+  "부산 🌞 24°C / 서울 ☁️ 22°C";
+},800);
 
-/* 📰 뉴스 (샘플 데이터) */
+/* 뉴스 */
 setTimeout(()=>{
   document.getElementById("newsList").innerHTML = `
     <li>부경대 취업 프로그램 확대</li>
-    <li>부산 복지 정책 강화 발표</li>
-    <li>청년 지원 사업 확대</li>
+    <li>부산 복지 정책 강화</li>
+    <li>청년 지원 사업 증가</li>
   `;
-},1000);
-
-/* 📊 그래프 */
-const ctx = document.getElementById('chart');
-
-new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ['아동복지','노인복지','장애인복지'],
-    datasets: [{
-      label: '이용률',
-      data: [65, 80, 55]
-    }]
-  }
-});
+},800);
 </script>
 
 </body>
