@@ -1,172 +1,241 @@
-data:text/html;charset=utf-8,<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Y2K MySpace Page</title>
+<title>2026 ss 패션 트렌드를 분석해줄게 나만 따라오라긔!</title>
 
 <style>
-body{
- margin:0;
- font-family:cursive;
- background:linear-gradient(pink, hotpink);
- overflow-x:hidden;
- cursor:url('https://cur.cursors-4u.net/cursors/cur-13/cur1140.cur'),auto;
+body {
+    margin:0;
+    font-family: 'Comic Sans MS', cursive;
+    overflow-x:hidden;
+
+    /* 💖 글리터 배경 */
+    background-image: url('https://i.imgur.com/8Qf6YQG.gif');
+    background-size: cover;
+
+    /* 💖 커서 */
+    cursor: url('https://cur.cursors-4u.net/cursors/cur-2/cur116.cur'), auto;
 }
 
-/* 메뉴 */
-.menu{
- background:#ff69b4;
- padding:12px;
- text-align:center;
- box-shadow:0 0 20px white;
- position:sticky;
- top:0;
+/* ✨ 반짝이 */
+.sparkle {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: sparkle 1s linear forwards;
+}
+@keyframes sparkle {
+    0% {opacity:1; transform: scale(1);}
+    100% {opacity:0; transform: scale(3);}
 }
 
-.menu button{
- margin:5px;
- padding:10px 15px;
- border-radius:20px;
- border:2px solid white;
- background:pink;
- cursor:pointer;
- font-weight:bold;
+/* 🎀 메인 */
+.main {
+    height:100vh;
+    background: url('main-bg.jpg') center/cover no-repeat;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
 
-/* 페이지 */
-.page{display:none; padding:30px;}
-.active{display:block;}
-
-h1{
- text-align:center;
- color:white;
- text-shadow:0 0 10px #fff,0 0 20px hotpink;
+/* 💖 프로필 */
+.profile {
+    width:150px;
+    border-radius:50%;
+    border:5px solid hotpink;
+    box-shadow:0 0 30px hotpink;
+    margin-bottom:20px;
 }
 
-.center{text-align:center;}
-
-.card{
- background:rgba(255,255,255,0.3);
- padding:20px;
- border-radius:20px;
- margin:20px auto;
- width:80%;
- box-shadow:0 0 15px white;
+/* 💖 제목 */
+.title {
+    font-size:45px;
+    font-weight:900;
+    color:#ff00ff;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 10px #ff00ff,
+        0 0 20px #ff00ff,
+        0 0 40px hotpink;
 }
 
-/* 이미지 */
-img{
- max-width:80%;
- border-radius:20px;
- box-shadow:0 0 20px white;
+/* 💖 버튼 */
+.btn {
+    margin-top:30px;
+    padding:15px 30px;
+    font-size:20px;
+    background:linear-gradient(pink, hotpink);
+    border:none;
+    border-radius:30px;
+    color:white;
+    cursor:pointer;
+    box-shadow:0 0 20px hotpink;
 }
 
-/* 반짝이 */
-.sparkle{
- position:fixed;
- width:6px;
- height:6px;
- background:white;
- border-radius:50%;
- pointer-events:none;
- animation:fade 1s linear forwards;
+/* 💖 섹션 */
+.section {
+    height:100vh;
+    padding:50px;
+    color:white;
+    text-align:center;
 }
 
-@keyframes fade{
- to{opacity:0; transform:scale(2);}
+/* 💖 형광 */
+.neon {
+    color:#00ffff;
+    text-shadow:0 0 15px #00ffff;
+}
+
+/* 💖 캐릭터 */
+.character {
+    width:200px;
+    margin-top:20px;
+}
+
+/* 💖 스티커 */
+.sticker {
+    position:absolute;
+    width:80px;
+    animation: float 3s infinite ease-in-out;
+}
+@keyframes float {
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0);}
+}
+
+/* 💖 방문자 */
+.counter {
+    position:fixed;
+    bottom:10px;
+    right:10px;
+    background:black;
+    color:#0f0;
+    padding:10px;
+    font-size:14px;
+    border:2px solid #0f0;
+}
+
+/* 💖 방명록 */
+.guestbook {
+    margin-top:30px;
+}
+input, textarea {
+    padding:10px;
+    margin:5px;
 }
 </style>
-
-<script>
-function showPage(id){
- document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
- document.getElementById(id).classList.add('active');
-}
-
-/* 반짝이 효과 */
-document.addEventListener('mousemove', function(e){
- let s=document.createElement('div');
- s.className='sparkle';
- s.style.left=e.pageX+'px';
- s.style.top=e.pageY+'px';
- document.body.appendChild(s);
- setTimeout(()=>s.remove(),800);
-});
-</script>
-
 </head>
 
 <body>
 
-<div class="menu">
-<button onclick="showPage('main')">💖 Main</button>
-<button onclick="showPage('fashion')">👗 Fashion</button>
-<button onclick="showPage('busan')">🌊 Busan</button>
-<button onclick="showPage('news')">📰 PKNU</button>
-<button onclick="showPage('welfare')">📊 Welfare</button>
+<!-- 🎀 스티커 -->
+<img src="https://i.imgur.com/Z6X7K8K.gif" class="sticker" style="top:50px; left:50px;">
+<img src="https://i.imgur.com/Z6X7K8K.gif" class="sticker" style="top:200px; right:50px;">
+
+<!-- 💖 메인 -->
+<div class="main">
+    <img src="profile.png" class="profile">
+
+    <div class="title">
+        2026 ss 패션 트렌드를 분석해줄게<br>
+        나만 따라오라긔!
+    </div>
+
+    <button class="btn" onclick="scrollToSection()">ENTER 💖</button>
 </div>
 
-<!-- 메인 -->
-<div id="main" class="page active center">
-<h1>Welcome to my page!</h1>
+<!-- 💖 패션 -->
+<div class="section" style="background:#111;">
+    <h1 class="neon">2026 SS 패션 트렌드</h1>
 
-<div class="card">
-<p>💿 Y2K 감성 홈페이지 💿</p>
-<p>✨ 반짝이 + 마이스페이스 스타일 ✨</p>
+    <p>✨ Y2K + 미래감성 ✨</p>
+    <p>💖 컬러: 핫핑크 / 실버 / 네온</p>
+    <p>💖 패턴: 글리터 / 메탈릭 / 키치</p>
+
+    <img src="character.png" class="character">
 </div>
 
+<!-- 💖 부산 -->
+<div class="section" style="background:#222;">
+    <h1>부산 & 뉴스</h1>
+    <p>🔥 여기에 뉴스 API 넣으면 완성</p>
 </div>
 
-<!-- 패션 -->
-<div id="fashion" class="page center">
-<h1>2026 SS 패션 트렌드</h1>
-
-<div class="card">
-<p>💖 Y2K + 로우라이즈 + 메탈릭</p>
-<p>💿 실버, 핑크, 글리터 컬러 유행</p>
-<p>👗 키워드: 슬림핏 / 크롭 / 레이어드</p>
+<!-- 💖 사회복지 -->
+<div class="section" style="background:#333;">
+    <h1>사회복지 & ESG</h1>
+    <canvas id="chart" width="300" height="300"></canvas>
 </div>
 
-<!-- 👉 이미지 (이미 포함됨) -->
-<img src="https://i.imgur.com/8Km9tLL.png">
+<!-- 💖 방명록 -->
+<div class="section" style="background:#000;">
+    <h1>💬 방명록</h1>
 
+    <div class="guestbook">
+        <input id="name" placeholder="이름">
+        <br>
+        <textarea id="msg" placeholder="메시지"></textarea>
+        <br>
+        <button onclick="addMsg()">남기기 💖</button>
+
+        <ul id="list"></ul>
+    </div>
 </div>
 
-<!-- 부산 -->
-<div id="busan" class="page">
-<h1>부산 날씨 & 이슈</h1>
-
-<div class="card">
-<p>🌞 오늘 날씨: 맑음 / 23도</p>
-<p>🌊 해운대 관광객 증가</p>
-<p>🎆 지역 축제 활성화</p>
+<!-- 💖 방문자수 -->
+<div class="counter">
+    방문자 💖 <span id="count"></span>
 </div>
 
-</div>
+<script>
+/* ✨ 반짝이 */
+document.addEventListener("mousemove", function(e){
+    for(let i=0; i<3; i++){
+        let s = document.createElement("div");
+        s.className="sparkle";
+        s.style.left=(e.pageX+Math.random()*10)+"px";
+        s.style.top=(e.pageY+Math.random()*10)+"px";
+        s.style.background=["#ff00ff","#00ffff","#fff"][Math.floor(Math.random()*3)];
+        document.body.appendChild(s);
+        setTimeout(()=>s.remove(),1000);
+    }
+});
 
-<!-- 뉴스 -->
-<div id="news" class="page">
-<h1>부경대 뉴스</h1>
+/* 💖 스크롤 */
+function scrollToSection(){
+    window.scrollTo({top:window.innerHeight, behavior:'smooth'});
+}
 
-<div class="card">
-<p>📢 캠퍼스 시설 개선 진행</p>
-<p>📚 학생 참여 프로그램 확대</p>
-<p>🎓 취업 지원 강화</p>
-</div>
+/* 💖 방문자 */
+let count = localStorage.getItem("visit") || 0;
+count++;
+localStorage.setItem("visit", count);
+document.getElementById("count").innerText = count;
 
-</div>
+/* 💖 방명록 */
+function addMsg(){
+    let name=document.getElementById("name").value;
+    let msg=document.getElementById("msg").value;
 
-<!-- 복지 -->
-<div id="welfare" class="page">
-<h1>사회복지 통계</h1>
+    let li=document.createElement("li");
+    li.innerText = name + " : " + msg;
 
-<div class="card">
-<p>📊 청년 복지 수요 증가</p>
-<p>👶 아동 지원 정책 확대</p>
-<p>👵 노인 복지 서비스 강화</p>
-</div>
+    document.getElementById("list").appendChild(li);
+}
 
-</div>
+/* 📊 간단 ESG 그래프 */
+let ctx = document.getElementById("chart").getContext("2d");
+ctx.fillStyle="pink";
+ctx.fillRect(50,150,50,100);
+ctx.fillRect(150,100,50,150);
+ctx.fillRect(250,50,50,200);
+</script>
 
 </body>
 </html>
