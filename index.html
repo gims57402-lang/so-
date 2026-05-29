@@ -2,81 +2,115 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Ultimate Homepage</title>
+<title>Ultimate Premium Homepage</title>
 
 <style>
 body{
   margin:0;
-  font-family:sans-serif;
-  background:#eef2f7;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  color:white;
+  overflow-x:hidden;
 }
 
+/* 헤더 */
 header{
-  background:linear-gradient(90deg,#4a6fa5,#6b8dd6);
-  color:white;
-  padding:20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  padding:20px 40px;
+  backdrop-filter:blur(10px);
 }
 
 .profile{
-  width:100px;
-  height:100px;
+  width:80px;
+  height:80px;
   border-radius:50%;
-  border:3px solid white;
+  border:2px solid white;
 }
 
+/* 메뉴 */
 nav{
-  background:#2f3e5c;
-  padding:10px;
   text-align:center;
+  margin-top:10px;
 }
 
 nav button{
-  margin:5px;
-  padding:10px 15px;
+  margin:10px;
+  padding:12px 20px;
   border:none;
-  border-radius:20px;
-  background:#ff8fab;
+  border-radius:30px;
+  background:rgba(255,255,255,0.2);
   color:white;
+  font-weight:bold;
   cursor:pointer;
-}
-
-nav button:hover{
-  background:#ff5c8a;
-}
-
-.window{
-  display:none;
-  padding:30px;
-}
-
-.card{
-  background:white;
-  max-width:900px;
-  margin:20px auto;
-  padding:25px;
-  border-radius:15px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-.card:hover{
-  transform:translateY(-5px);
+  backdrop-filter:blur(10px);
   transition:0.3s;
 }
 
+nav button:hover{
+  background:#ff4ecd;
+  transform:scale(1.1);
+}
+
+/* 윈도우 */
+.window{
+  display:none;
+  padding:40px;
+  animation:fade 0.5s;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* 카드 */
+.card{
+  max-width:900px;
+  margin:20px auto;
+  padding:30px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(15px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.02);
+}
+
+/* 그래프 */
 .bar{
-  background:#ddd;
+  background:rgba(255,255,255,0.2);
   border-radius:10px;
   margin:10px 0;
 }
 
 .fill{
-  background:#4CAF50;
-  color:white;
-  padding:5px;
+  background:linear-gradient(90deg,#00f2fe,#4facfe);
+  padding:6px;
   border-radius:10px;
+  font-size:12px;
+}
+
+/* 뉴스 */
+ul li{
+  margin:10px 0;
+  padding:10px;
+  background:rgba(255,255,255,0.1);
+  border-radius:10px;
+}
+
+/* 타이틀 */
+h1{
+  font-size:28px;
+}
+
+h2{
+  border-bottom:2px solid rgba(255,255,255,0.3);
+  padding-bottom:5px;
 }
 </style>
 </head>
@@ -85,31 +119,32 @@ nav button:hover{
 
 <header>
 <div>
-<h1>Ultimate Homepage</h1>
+<h1>🌟 Premium Homepage</h1>
 <p>부경대학교 · 사회복지학과</p>
 </div>
 <img src="profile.png" class="profile">
 </header>
 
 <nav>
-<button onclick="openWin('home')">홈</button>
-<button onclick="openWin('weather')">날씨</button>
-<button onclick="openWin('news')">뉴스</button>
-<button onclick="openWin('data')">통계</button>
+<button onclick="openWin('home')">🏠 홈</button>
+<button onclick="openWin('weather')">🌤 날씨</button>
+<button onclick="openWin('news')">📰 뉴스</button>
+<button onclick="openWin('data')">📊 통계</button>
 </nav>
 
 <!-- 홈 -->
 <div id="home" class="window">
 <div class="card">
-<h2>소개</h2>
-<p>안녕하세요 😊 업그레이드된 홈페이지입니다!</p>
+<h2>✨ 소개</h2>
+<p>눈길을 사로잡는 프리미엄 홈페이지 🚀</p>
+<p>ESG · 뉴스 · 날씨를 한눈에 확인하세요</p>
 </div>
 </div>
 
 <!-- 날씨 -->
 <div id="weather" class="window">
 <div class="card">
-<h2>날씨</h2>
+<h2>🌤 부산 날씨</h2>
 <p id="weatherBox">불러오는 중...</p>
 </div>
 </div>
@@ -117,35 +152,30 @@ nav button:hover{
 <!-- 뉴스 -->
 <div id="news" class="window">
 <div class="card">
-<h2>뉴스</h2>
+<h2>📰 최신 뉴스</h2>
 <ul id="newsList"></ul>
 </div>
 </div>
 
-<!-- 통계 (🔥 ESG 포함 핵심) -->
+<!-- 통계 -->
 <div id="data" class="window">
 <div class="card">
 
-<h2>📊 부산 ESG 경영 통계</h2>
+<h2>📊 부산 ESG 통계</h2>
 
-<h3>1. 기업 구조</h3>
-<p>부산 제조업 기업 수: 약 35,000개</p>
-<p>중소기업 비율: 약 99%</p>
+<h3>기업 구조</h3>
+<p>중소기업 비율 99%</p>
+<div class="bar"><div class="fill" style="width:99%">99%</div></div>
 
-<h3>2. ESG 도입 현황</h3>
-<p>타 지역 대비 ESG 수준: 초기 단계</p>
-<div class="bar"><div class="fill" style="width:60%">도입률 60%</div></div>
+<h3>ESG 도입률</h3>
+<div class="bar"><div class="fill" style="width:60%">60%</div></div>
 
-<h3>3. ESG 선도 기업</h3>
-<p>2025년 기준 24개 기업 선정</p>
-<div class="bar"><div class="fill" style="width:70%">성장률 70%</div></div>
+<h3>ESG 성장률</h3>
+<div class="bar"><div class="fill" style="width:70%">70%</div></div>
 
-<h3>4. 공공기관 목표</h3>
-<p>미세먼지 감축: 40%</p>
-<p>일자리 창출: 40,000개</p>
-
-<h3>5. 핵심 키워드</h3>
-<p>#탄소중립 #사회적책임 #지속가능성 #투명경영</p>
+<h3>공공 목표</h3>
+<p>미세먼지 40% 감소</p>
+<p>일자리 40,000개 창출</p>
 
 </div>
 </div>
@@ -168,7 +198,7 @@ setTimeout(()=>{
   document.getElementById("newsList").innerHTML=
   "<li>부경대학교 최신 소식</li>" +
   "<li>부산 ESG 정책 확대</li>" +
-  "<li>사회복지 통계 증가 추세</li>";
+  "<li>사회복지 통계 증가</li>";
 },1000);
 </script>
 
