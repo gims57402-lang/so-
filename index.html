@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Ultimate Premium Homepage</title>
+<title>Ultimate 2026 ss 패션 트렌드를 알려줄게 나만 따라와!</title>
 
 <style>
 body{
@@ -10,6 +10,49 @@ body{
   font-family:'Segoe UI',sans-serif;
   background:linear-gradient(135deg,#667eea,#764ba2);
   color:white;
+}
+
+/* 헤더 */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 40px;
+}
+
+.profile{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  border:2px solid white;
+}
+
+/* 메뉴 */
+nav{
+  text-align:center;
+}
+
+nav button{
+  margin:10px;
+  padding:12px 20px;
+  border:none;
+  border-radius:30px;
+  background:rgba(255,255,255,0.2);
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+nav button:hover{
+  background:#ff4ecd;
+  transform:scale(1.1);
+}
+
+/* 창 */
+.window{
+  display:none;
+  padding:40px;
 }
 
 /* 카드 */
@@ -22,19 +65,7 @@ body{
   backdrop-filter:blur(15px);
 }
 
-/* 버튼 */
-nav{text-align:center;}
-nav button{
-  margin:10px;
-  padding:12px 20px;
-  border:none;
-  border-radius:30px;
-  background:rgba(255,255,255,0.2);
-  color:white;
-  cursor:pointer;
-}
-
-/* 그래프 */
+/* ESG 그래프 */
 .chart{
   display:flex;
   justify-content:space-around;
@@ -44,67 +75,87 @@ nav button{
 
 .bar{
   width:60px;
-  background:linear-gradient(to top,#00f2fe,#4facfe);
-  text-align:center;
   border-radius:10px;
+  text-align:center;
+  color:white;
+  font-size:12px;
 }
 
-/* 창 */
-.window{display:none;}
+/* 뉴스 */
+ul li{
+  margin:10px 0;
+  padding:10px;
+  background:rgba(255,255,255,0.1);
+  border-radius:10px;
+}
 </style>
 </head>
 
 <body>
 
-<h1 style="text-align:center;">🌟 부산 ESG & 뉴스 플랫폼</h1>
+<header>
+<div>
+<h1>🌟 Premium Homepage</h1>
+<p>부경대학교 · 사회복지학과</p>
+</div>
+<img src="profile.png" class="profile">
+</header>
 
 <nav>
-<button onclick="openWin('home')">홈</button>
-<button onclick="openWin('news')">뉴스</button>
-<button onclick="openWin('data')">ESG</button>
+<button onclick="openWin('home')">🏠 홈</button>
+<button onclick="openWin('weather')">🌤 날씨</button>
+<button onclick="openWin('news')">📰 뉴스</button>
+<button onclick="openWin('data')">📊 ESG</button>
+<button onclick="openWin('fashion')">👗 패션</button>
 </nav>
 
 <!-- 홈 -->
 <div id="home" class="window">
 <div class="card">
-<h2>소개</h2>
-<p>부산 · ESG · 부경대 정보를 한눈에</p>
+<h2>✨ 소개</h2>
+<p>부산 · ESG · 뉴스 · 패션 트렌드를 한눈에 보는 플랫폼</p>
 </div>
 </div>
 
-<!-- 뉴스 (🔥 실제 뉴스 적용) -->
+<!-- 날씨 -->
+<div id="weather" class="window">
+<div class="card">
+<h2>🌤 부산 날씨</h2>
+<p id="weatherBox">불러오는 중...</p>
+</div>
+</div>
+
+<!-- 뉴스 -->
 <div id="news" class="window">
 <div class="card">
 <h2>📰 최신 뉴스</h2>
-
 <ul>
-<li>부경대, ESG 기반 교육 프로그램 운영 확대</li>
-<li>부산 환경산업 ESG 워크숍 개최</li>
-<li>부경대, 해양수산 전문인력 양성사업 선정</li>
+<li>부경대 ESG 기반 교육 프로그램 확대</li>
+<li>부산 ESG 환경 정책 및 워크숍 개최</li>
+<li>부경대 해양수산 인재 양성 사업 선정</li>
 </ul>
-
 </div>
 </div>
 
-<!-- ESG (🔥 그래프 버전) -->
+<!-- ESG -->
 <div id="data" class="window">
 <div class="card">
 
-<h2>📊 부산 ESG 통계 (그래프)</h2>
+<h2>📊 부산 ESG 통계</h2>
 
 <div class="chart">
   <div>
-    <div class="bar" style="height:120px;">60%</div>
-    <p>ESG 도입</p>
+    <div class="bar" style="height:120px;background:#00f2fe;">60%</div>
+    <p>도입률</p>
   </div>
   
   <div>
-    <div class="bar" style="height:150px;">70%</div>
+    <div class="bar" style="height:150px;background:#4facfe;">70%</div>
     <p>성장률</p>
   </div>
 
   <div>
-    <div class="bar" style="height:200px;">99%</div>
+    <div class="bar" style="height:200px;background:#43e97b;">99%</div>
     <p>중소기업</p>
   </div>
 </div>
@@ -114,12 +165,61 @@ nav button{
 </div>
 </div>
 
+<!-- 패션 -->
+<div id="fashion" class="window">
+<div class="card">
+
+<h2>👗 2026 SS 패션 트렌드</h2>
+
+<h3>🎨 컬러</h3>
+<div class="chart">
+
+  <div>
+    <div class="bar" style="height:160px;background:red;">RED</div>
+    <p>비비드 레드</p>
+  </div>
+
+  <div>
+    <div class="bar" style="height:180px;background:#008080;">TEAL</div>
+    <p>틸 컬러</p>
+  </div>
+
+  <div>
+    <div class="bar" style="height:140px;background:gold;">YELLOW</div>
+    <p>버터 옐로우</p>
+  </div>
+
+  <div>
+    <div class="bar" style="height:120px;background:brown;">BROWN</div>
+    <p>모카 브라운</p>
+  </div>
+
+</div>
+
+<h3>🧵 패턴</h3>
+<ul>
+<li>🌸 그래픽 플라워 패턴</li>
+<li>🟥 컬러 블록 스타일</li>
+<li>✔ 밝은 체크 패턴</li>
+</ul>
+
+<p>✔ 강렬한 색감 + 자연톤 혼합 트렌드</p>
+
+</div>
+</div>
+
 <script>
 function openWin(id){
   document.querySelectorAll('.window').forEach(w=>w.style.display='none');
   document.getElementById(id).style.display='block';
 }
+
 openWin('home');
+
+/* 날씨 */
+setTimeout(()=>{
+  document.getElementById("weatherBox").innerHTML="부산 ☀ 24°C 맑음";
+},1000);
 </script>
 
 </body>
