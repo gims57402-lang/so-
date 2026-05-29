@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>My Cute Profile</title>
+<style>
+body {margin:0;font-family:sans-serif;background:#fdf6f9;}
+section {padding:100px 20px;text-align:center;}
+.hero {height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(135deg,#ffd6e0,#d6e4ff);}
+.hero img {width:160px;height:160px;border-radius:50%;object-fit:cover;border:4px solid white;margin-bottom:20px;}
+.card {background:white;max-width:700px;margin:20px auto;padding:30px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.05);}
+button {padding:10px 20px;border:none;border-radius:20px;background:#ff8fab;color:white;cursor:pointer;}
+.fade {opacity:0;transform:translateY(30px);transition:1s;}
+.fade.show {opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<section class="hero">
+<img src="profile.png">
+<h1>안녕하세요 😊</h1>
+<p>사회복지를 공부하는 학생입니다</p>
+<button onclick="scrollDown()">더 보기 ↓</button>
+</section>
+
+<section class="fade"><div class="card"><h2>🌿 About Me</h2><p>따뜻한 사회를 만드는 것이 목표입니다.</p></div></section>
+<section class="fade"><div class="card"><h2>💡 관심 분야</h2><p>사회복지 / 아동복지 / 상담</p></div></section>
+<section class="fade"><div class="card"><h2>🎯 목표</h2><p>누군가에게 힘이 되는 사람</p></div></section>
+<section class="fade"><div class="card"><h2>💌 Thank you</h2><p>방문해줘서 고마워요 ☀️</p></div></section>
+
+<script>
+function scrollDown(){window.scrollTo({top:window.innerHeight,behavior:'smooth'});}
+const fades=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+fades.forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight-100){
+el.classList.add('show');
+}
+});
+});
+</script>
+
+</body>
+</html>
