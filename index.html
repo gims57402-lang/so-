@@ -7,234 +7,132 @@
 <style>
 body {
     margin:0;
-    font-family: 'Comic Sans MS', cursive;
-    overflow-x:hidden;
-
-    /* 💖 글리터 배경 */
-    background-image: url('https://i.imgur.com/8Qf6YQG.gif');
-    background-size: cover;
-
-    /* 💖 커서 */
-    cursor: url('https://cur.cursors-4u.net/cursors/cur-2/cur116.cur'), auto;
-}
-
-/* ✨ 반짝이 */
-.sparkle {
-    position: fixed;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: sparkle 1s linear forwards;
-}
-@keyframes sparkle {
-    0% {opacity:1; transform: scale(1);}
-    100% {opacity:0; transform: scale(3);}
-}
-
-/* 🎀 메인 */
-.main {
-    height:100vh;
-    background: url('main-bg.jpg') center/cover no-repeat;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-}
-
-/* 💖 프로필 */
-.profile {
-    width:150px;
-    border-radius:50%;
-    border:5px solid hotpink;
-    box-shadow:0 0 30px hotpink;
-    margin-bottom:20px;
-}
-
-/* 💖 제목 */
-.title {
-    font-size:45px;
-    font-weight:900;
-    color:#ff00ff;
-    text-shadow:
-        0 0 5px #fff,
-        0 0 10px #ff00ff,
-        0 0 20px #ff00ff,
-        0 0 40px hotpink;
-}
-
-/* 💖 버튼 */
-.btn {
-    margin-top:30px;
-    padding:15px 30px;
-    font-size:20px;
-    background:linear-gradient(pink, hotpink);
-    border:none;
-    border-radius:30px;
-    color:white;
-    cursor:pointer;
-    box-shadow:0 0 20px hotpink;
-}
-
-/* 💖 섹션 */
-.section {
-    height:100vh;
-    padding:50px;
-    color:white;
-    text-align:center;
-}
-
-/* 💖 형광 */
-.neon {
-    color:#00ffff;
-    text-shadow:0 0 15px #00ffff;
-}
-
-/* 💖 캐릭터 */
-.character {
-    width:200px;
-    margin-top:20px;
-}
-
-/* 💖 스티커 */
-.sticker {
-    position:absolute;
-    width:80px;
-    animation: float 3s infinite ease-in-out;
-}
-@keyframes float {
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-15px);}
-    100%{transform:translateY(0);}
-}
-
-/* 💖 방문자 */
-.counter {
-    position:fixed;
-    bottom:10px;
-    right:10px;
+    font-family:'Comic Sans MS';
     background:black;
-    color:#0f0;
-    padding:10px;
-    font-size:14px;
-    border:2px solid #0f0;
+    color:white;
+    overflow:hidden;
+    cursor:url('https://cur.cursors-4u.net/cursors/cur-2/cur116.cur'), auto;
 }
 
-/* 💖 방명록 */
-.guestbook {
-    margin-top:30px;
+/* 반짝이 */
+.sparkle{
+    position:fixed;
+    width:8px;height:8px;
+    border-radius:50%;
+    pointer-events:none;
+    animation:fade 1s forwards;
 }
-input, textarea {
+@keyframes fade{
+    to{opacity:0; transform:scale(3);}
+}
+
+/* 윈도우 */
+.window{
+    position:absolute;
+    width:300px;
+    background:#111;
+    border:2px solid hotpink;
+    box-shadow:0 0 20px hotpink;
     padding:10px;
-    margin:5px;
+}
+
+.title{
+    color:#ff00ff;
+    text-shadow:0 0 20px hotpink;
+}
+
+.profile{
+    width:100px;
+    border-radius:50%;
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎀 스티커 -->
-<img src="https://i.imgur.com/Z6X7K8K.gif" class="sticker" style="top:50px; left:50px;">
-<img src="https://i.imgur.com/Z6X7K8K.gif" class="sticker" style="top:200px; right:50px;">
+<!-- 💖 BGM -->
+<audio autoplay loop>
+<source src="data:audio/mp3;base64,여기에BGM붙여넣기">
+</audio>
 
 <!-- 💖 메인 -->
-<div class="main">
-    <img src="profile.png" class="profile">
+<div class="window" style="top:50px;left:50px;">
+    <h2 class="title">WELCOME 💖</h2>
 
-    <div class="title">
-        2026 ss 패션 트렌드를 분석해줄게<br>
-        나만 따라오라긔!
-    </div>
+    <!-- 프로필 -->
+    <img class="profile"
+    src="data:image/png;base64,여기에프로필이미지">
 
-    <button class="btn" onclick="scrollToSection()">ENTER 💖</button>
+    <br><br>
+
+    <button onclick="openWin('fashion')">패션 💅</button>
+    <button onclick="openWin('info')">정보 📊</button>
 </div>
 
 <!-- 💖 패션 -->
-<div class="section" style="background:#111;">
-    <h1 class="neon">2026 SS 패션 트렌드</h1>
+<div id="fashion" class="window" style="top:80px;left:400px;display:none;">
+    <h3>2026 SS 트렌드</h3>
+    <p>💖 Y2K / 메탈릭 / 네온</p>
 
-    <p>✨ Y2K + 미래감성 ✨</p>
-    <p>💖 컬러: 핫핑크 / 실버 / 네온</p>
-    <p>💖 패턴: 글리터 / 메탈릭 / 키치</p>
-
-    <img src="character.png" class="character">
+    <img width="120"
+    src="data:image/png;base64,여기에캐릭터이미지">
 </div>
 
-<!-- 💖 부산 -->
-<div class="section" style="background:#222;">
-    <h1>부산 & 뉴스</h1>
-    <p>🔥 여기에 뉴스 API 넣으면 완성</p>
-</div>
+<!-- 💖 정보 -->
+<div id="info" class="window" style="top:200px;left:200px;display:none;">
+    <h3>📊 정보</h3>
 
-<!-- 💖 사회복지 -->
-<div class="section" style="background:#333;">
-    <h1>사회복지 & ESG</h1>
-    <canvas id="chart" width="300" height="300"></canvas>
+    <p id="date"></p>
+
+    <canvas id="chart" width="200" height="150"></canvas>
 </div>
 
 <!-- 💖 방명록 -->
-<div class="section" style="background:#000;">
-    <h1>💬 방명록</h1>
-
-    <div class="guestbook">
-        <input id="name" placeholder="이름">
-        <br>
-        <textarea id="msg" placeholder="메시지"></textarea>
-        <br>
-        <button onclick="addMsg()">남기기 💖</button>
-
-        <ul id="list"></ul>
-    </div>
-</div>
-
-<!-- 💖 방문자수 -->
-<div class="counter">
-    방문자 💖 <span id="count"></span>
+<div class="window" style="top:350px;left:50px;">
+    <h3>💬 방명록</h3>
+    <input id="name"><br>
+    <textarea id="msg"></textarea><br>
+    <button onclick="addMsg()">등록</button>
+    <ul id="list"></ul>
 </div>
 
 <script>
-/* ✨ 반짝이 */
-document.addEventListener("mousemove", function(e){
-    for(let i=0; i<3; i++){
-        let s = document.createElement("div");
+/* 창 */
+function openWin(id){
+    document.getElementById(id).style.display='block';
+}
+
+/* 반짝이 */
+document.addEventListener("mousemove",e=>{
+    for(let i=0;i<2;i++){
+        let s=document.createElement("div");
         s.className="sparkle";
-        s.style.left=(e.pageX+Math.random()*10)+"px";
-        s.style.top=(e.pageY+Math.random()*10)+"px";
+        s.style.left=e.pageX+"px";
+        s.style.top=e.pageY+"px";
         s.style.background=["#ff00ff","#00ffff","#fff"][Math.floor(Math.random()*3)];
         document.body.appendChild(s);
         setTimeout(()=>s.remove(),1000);
     }
 });
 
-/* 💖 스크롤 */
-function scrollToSection(){
-    window.scrollTo({top:window.innerHeight, behavior:'smooth'});
-}
+/* 날짜 */
+document.getElementById("date").innerText=new Date().toLocaleDateString();
 
-/* 💖 방문자 */
-let count = localStorage.getItem("visit") || 0;
-count++;
-localStorage.setItem("visit", count);
-document.getElementById("count").innerText = count;
-
-/* 💖 방명록 */
+/* 방명록 */
 function addMsg(){
-    let name=document.getElementById("name").value;
-    let msg=document.getElementById("msg").value;
-
     let li=document.createElement("li");
-    li.innerText = name + " : " + msg;
-
+    li.innerText=
+    document.getElementById("name").value+" : "+
+    document.getElementById("msg").value;
     document.getElementById("list").appendChild(li);
 }
 
-/* 📊 간단 ESG 그래프 */
-let ctx = document.getElementById("chart").getContext("2d");
+/* 그래프 */
+let ctx=document.getElementById("chart").getContext("2d");
 ctx.fillStyle="pink";
-ctx.fillRect(50,150,50,100);
-ctx.fillRect(150,100,50,150);
-ctx.fillRect(250,50,50,200);
+ctx.fillRect(20,50,40,80);
+ctx.fillRect(80,30,40,100);
+ctx.fillRect(140,70,40,60);
 </script>
 
 </body>
