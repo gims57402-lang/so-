@@ -2,199 +2,174 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>My Window Portfolio</title>
+<title>Ultimate Homepage</title>
 
 <style>
-body {
+body{
   margin:0;
-  background:#0f172a;
-  font-family: 'Segoe UI';
-  overflow:hidden;
+  font-family:sans-serif;
+  background:#eef2f7;
+}
+
+header{
+  background:linear-gradient(90deg,#4a6fa5,#6b8dd6);
   color:white;
-}
-
-/* 바탕 */
-#desktop {
-  width:100vw;
-  height:100vh;
-  position:relative;
-}
-
-/* 아이콘 */
-.icon {
-  width:90px;
-  text-align:center;
-  cursor:pointer;
-  margin:20px;
-  display:inline-block;
-}
-.icon img {
-  width:60px;
-}
-.icon:hover {
-  transform:scale(1.1);
-}
-
-/* 창 */
-.window {
-  width:500px;
-  height:400px;
-  background:white;
-  color:black;
-  position:absolute;
-  top:100px;
-  left:100px;
-  border-radius:10px;
-  display:none;
-  overflow:auto;
-  box-shadow:0 0 20px rgba(0,0,0,0.5);
-}
-
-.title-bar {
-  background:#6366f1;
-  color:white;
-  padding:10px;
-  font-weight:bold;
+  padding:20px;
   display:flex;
   justify-content:space-between;
+  align-items:center;
 }
 
-/* 방명록 */
-input, textarea {
-  width:90%;
+.profile{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  border:3px solid white;
+}
+
+nav{
+  background:#2f3e5c;
+  padding:10px;
+  text-align:center;
+}
+
+nav button{
   margin:5px;
-}
-button {
-  margin:5px;
-}
-
-/* 커서 */
-body {
-  cursor: url('https://cur.cursors-4u.net/cursors/cur-9/cur817.cur'), auto;
+  padding:10px 15px;
+  border:none;
+  border-radius:20px;
+  background:#ff8fab;
+  color:white;
+  cursor:pointer;
 }
 
+nav button:hover{
+  background:#ff5c8a;
+}
+
+.window{
+  display:none;
+  padding:30px;
+}
+
+.card{
+  background:white;
+  max-width:900px;
+  margin:20px auto;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  transition:0.3s;
+}
+
+.bar{
+  background:#ddd;
+  border-radius:10px;
+  margin:10px 0;
+}
+
+.fill{
+  background:#4CAF50;
+  color:white;
+  padding:5px;
+  border-radius:10px;
+}
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 BGM -->
-<audio autoplay loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mp3">
-</audio>
+<header>
+<div>
+<h1>Ultimate Homepage</h1>
+<p>부경대학교 · 사회복지학과</p>
+</div>
+<img src="profile.png" class="profile">
+</header>
 
-<div id="desktop">
+<nav>
+<button onclick="openWin('home')">홈</button>
+<button onclick="openWin('weather')">날씨</button>
+<button onclick="openWin('news')">뉴스</button>
+<button onclick="openWin('data')">통계</button>
+</nav>
 
-<!-- 아이콘 -->
-<div class="icon" onclick="openWin('profile')">
-  <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
-  <div>프로필</div>
+<!-- 홈 -->
+<div id="home" class="window">
+<div class="card">
+<h2>소개</h2>
+<p>안녕하세요 😊 업그레이드된 홈페이지입니다!</p>
+</div>
 </div>
 
-<div class="icon" onclick="openWin('welfare')">
-  <img src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png">
-  <div>사회복지</div>
+<!-- 날씨 -->
+<div id="weather" class="window">
+<div class="card">
+<h2>날씨</h2>
+<p id="weatherBox">불러오는 중...</p>
 </div>
-
-<div class="icon" onclick="openWin('esg')">
-  <img src="https://cdn-icons-png.flaticon.com/512/1041/1041884.png">
-  <div>ESG 통계</div>
-</div>
-
-<div class="icon" onclick="openWin('news')">
-  <img src="https://cdn-icons-png.flaticon.com/512/2965/2965879.png">
-  <div>부경대 뉴스</div>
-</div>
-
-<div class="icon" onclick="openWin('guest')">
-  <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png">
-  <div>방명록</div>
-</div>
-
-<div class="icon" onclick="window.open('fashion.html')">
-  <img src="https://cdn-icons-png.flaticon.com/512/892/892458.png">
-  <div>패션 트렌드</div>
-</div>
-
-<!-- 프로필 -->
-<div class="window" id="profile">
-  <div class="title-bar">프로필 <span onclick="closeWin('profile')">X</span></div>
-  <div style="padding:10px">
-    <h3>📅 오늘 날짜</h3>
-    <p id="date"></p>
-
-    <h3>📸 증명사진</h3>
-    <!-- 여기에 base64 넣기 -->
-    <img src="여기에_base64_붙여넣기" width="150">
-
-    <h3>🙋 소개</h3>
-    <p>사회복지 전공 / 트렌드 관심</p>
-  </div>
-</div>
-
-<!-- 사회복지 -->
-<div class="window" id="welfare">
-  <div class="title-bar">사회복지 통계 <span onclick="closeWin('welfare')">X</span></div>
-  <div style="padding:10px">
-    
-    
-
-  </div>
-</div>
-
-<!-- ESG -->
-<div class="window" id="esg">
-  <div class="title-bar">부산 ESG 기업 비율 <span onclick="closeWin('esg')">X</span></div>
-  <div style="padding:10px">
-
-    
-
-  </div>
 </div>
 
 <!-- 뉴스 -->
-<div class="window" id="news">
-  <div class="title-bar">부경대 뉴스 <span onclick="closeWin('news')">X</span></div>
-  <div style="padding:10px">
-    <ul>
-      <li><a href="#" onclick="alert('산학협력 확대 뉴스')">산학협력 확대</a></li>
-      <li><a href="#" onclick="alert('취업률 상승')">취업률 상승</a></li>
-    </ul>
-  </div>
+<div id="news" class="window">
+<div class="card">
+<h2>뉴스</h2>
+<ul id="newsList"></ul>
+</div>
 </div>
 
-<!-- 방명록 -->
-<div class="window" id="guest">
-  <div class="title-bar">방명록 <span onclick="closeWin('guest')">X</span></div>
-  <div style="padding:10px">
-    <input id="name" placeholder="이름"><br>
-    <textarea id="msg" placeholder="메시지"></textarea><br>
-    <button onclick="addMsg()">등록</button>
-    <div id="list"></div>
-  </div>
-</div>
+<!-- 통계 (🔥 ESG 포함 핵심) -->
+<div id="data" class="window">
+<div class="card">
 
+<h2>📊 부산 ESG 경영 통계</h2>
+
+<h3>1. 기업 구조</h3>
+<p>부산 제조업 기업 수: 약 35,000개</p>
+<p>중소기업 비율: 약 99%</p>
+
+<h3>2. ESG 도입 현황</h3>
+<p>타 지역 대비 ESG 수준: 초기 단계</p>
+<div class="bar"><div class="fill" style="width:60%">도입률 60%</div></div>
+
+<h3>3. ESG 선도 기업</h3>
+<p>2025년 기준 24개 기업 선정</p>
+<div class="bar"><div class="fill" style="width:70%">성장률 70%</div></div>
+
+<h3>4. 공공기관 목표</h3>
+<p>미세먼지 감축: 40%</p>
+<p>일자리 창출: 40,000개</p>
+
+<h3>5. 핵심 키워드</h3>
+<p>#탄소중립 #사회적책임 #지속가능성 #투명경영</p>
+
+</div>
 </div>
 
 <script>
 function openWin(id){
+  document.querySelectorAll('.window').forEach(w=>w.style.display='none');
   document.getElementById(id).style.display='block';
 }
-function closeWin(id){
-  document.getElementById(id).style.display='none';
-}
 
-// 날짜
-document.getElementById("date").innerText = new Date().toLocaleDateString();
+openWin('home');
 
-// 방명록
-function addMsg(){
-  let name=document.getElementById("name").value;
-  let msg=document.getElementById("msg").value;
-  let div=document.createElement("div");
-  div.innerText=name+" : "+msg;
-  document.getElementById("list").appendChild(div);
-}
+/* 날씨 */
+setTimeout(()=>{
+  document.getElementById("weatherBox").innerHTML="부산 ☀ 24°C 맑음";
+},1000);
+
+/* 뉴스 */
+setTimeout(()=>{
+  document.getElementById("newsList").innerHTML=
+  "<li>부경대학교 최신 소식</li>" +
+  "<li>부산 ESG 정책 확대</li>" +
+  "<li>사회복지 통계 증가 추세</li>";
+},1000);
 </script>
 
 </body>
