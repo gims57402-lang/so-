@@ -8,8 +8,8 @@
 body {
   margin:0;
   background:black;
-  font-family: 'Comic Sans MS', cursive;
   color:white;
+  font-family: "Comic Sans MS", cursive;
   overflow:hidden;
 }
 
@@ -20,9 +20,8 @@ body {
   left:50%;
   transform:translateX(-50%);
   font-size:28px;
-  color:hotpink;
-  text-shadow:0 0 10px yellow, 0 0 20px purple;
-  z-index:999;
+  color:#ff00aa;
+  text-shadow:0 0 10px yellow, 0 0 20px hotpink;
 }
 
 /* 윈도우 */
@@ -52,7 +51,8 @@ img {
 button {
   background:hotpink;
   border:none;
-  padding:5px 10px;
+  padding:5px;
+  color:white;
   cursor:pointer;
 }
 
@@ -79,60 +79,48 @@ textarea {
 
 <!-- 🎧 BGM -->
 <audio autoplay loop>
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_9d1e2c9c4f.mp3">
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_9d1e2c9c4f.mp3">
 </audio>
 
-<!-- 📸 증명사진 (여기에 base64 넣기) -->
+<!-- 📸 만화 증명사진 -->
 <div class="window" style="top:80px; left:40px;">
-  <h3>ME</h3>
-  <img src="data:image/png;base64,여기에_증명사진_base64_붙여넣기">
+<h3>👤 MY PROFILE (만화 ver)</h3>
+<img src="data:image/png;base64,여기에_너_만화증명사진_base64">
 </div>
 
-<!-- 📷 참고 이미지1 -->
+<!-- 👗 패션 트렌드 -->
 <div class="window" style="top:80px; left:350px;">
-  <h3>LOOK 1</h3>
-  <img src="data:image/jpg;base64,여기에_이미지1_base64">
-</div>
-
-<!-- 📷 참고 이미지2 -->
-<div class="window" style="top:80px; left:660px;">
-  <h3>LOOK 2</h3>
-  <img src="data:image/jpg;base64,여기에_이미지2_base64">
+<h3>👗 패션 트렌드</h3>
+<button onclick="openFashion()">보러가기</button>
 </div>
 
 <!-- 📊 사회복지 통계 -->
+<div class="window" style="top:80px; left:660px;">
+<h3>📊 사회복지 통계</h3>
+<canvas id="welfareChart" width="250" height="150"></canvas>
+<p style="font-size:12px;">청년 우울감 / 노인 빈곤율</p>
+</div>
+
+<!-- 🌊 부산 ESG 통계 -->
 <div class="window" style="top:380px; left:40px;">
-  <h3>사회복지 통계</h3>
-  <p>청년 우울감 증가 📈</p>
-  <p>노인 빈곤율 OECD 1위</p>
+<h3>🌱 부산 ESG 경영</h3>
+<canvas id="esgChart" width="250" height="150"></canvas>
+<p style="font-size:12px;">친환경 기업 증가 추세</p>
 </div>
 
 <!-- 🏫 부경대 뉴스 -->
 <div class="window" style="top:380px; left:350px;">
-  <h3>부경대 뉴스</h3>
-  <p>AI융합 학과 인기 상승🔥</p>
-  <p>취업률 상승 추세</p>
+<h3>🏫 부경대 뉴스</h3>
+<p>✔ AI융합 학과 인기 상승 🔥</p>
+<p>✔ 취업률 증가 추세 📈</p>
 </div>
 
-<!-- 🌍 ESG -->
+<!-- 💌 방명록 -->
 <div class="window" style="top:380px; left:660px;">
-  <h3>ESG 기업</h3>
-  <p>친환경 브랜드 증가 🌱</p>
-  <p>패션업계 지속가능성 강조</p>
-</div>
-
-<!-- 📝 방명록 -->
-<div class="window" style="top:80px; right:40px;">
-  <h3>방명록 💬</h3>
-  <textarea rows="4"></textarea>
-  <button onclick="addGuest()">등록</button>
-  <ul id="guestList"></ul>
-</div>
-
-<!-- 👉 페이지 이동 -->
-<div class="window" style="top:380px; right:40px;">
-  <h3>패션 분석</h3>
-  <button onclick="openPage()">보러가기</button>
+<h3>💌 방명록</h3>
+<textarea id="guestText"></textarea>
+<button onclick="addGuest()">등록</button>
+<ul id="guestList"></ul>
 </div>
 
 <script>
@@ -149,24 +137,38 @@ document.addEventListener("mousemove", e=>{
 
 /* 📝 방명록 */
 function addGuest(){
-  let text=document.querySelector("textarea").value;
+  let text=document.getElementById("guestText").value;
   let li=document.createElement("li");
   li.innerText=text;
   document.getElementById("guestList").appendChild(li);
 }
 
-/* 🪟 새 창 (패션 분석 페이지) */
-function openPage(){
+/* 👗 패션 페이지 */
+function openFashion(){
   let w=window.open("","_blank","width=500,height=500");
   w.document.write(`
     <body style="background:black;color:white;font-family:cursive">
-    <h1 style="color:hotpink">2026 SS 트렌드</h1>
-    <p>✔ Y2K + 글리터</p>
-    <p>✔ 로우라이즈 복귀</p>
-    <p>✔ 친환경 소재</p>
+    <h1 style="color:hotpink">2026 SS 패션 트렌드</h1>
+    <p>✔ Y2K + 글리터 ✨</p>
+    <p>✔ 로우라이즈 복귀 👖</p>
+    <p>✔ 친환경 소재 🌱</p>
+    <p>✔ 컬러풀 & 형광 스타일 💖</p>
     </body>
   `);
 }
+
+/* 📊 사회복지 그래프 */
+let wctx = document.getElementById("welfareChart").getContext("2d");
+wctx.fillStyle="pink";
+wctx.fillRect(10,100,30,-60);
+wctx.fillRect(60,100,30,-90);
+
+/* 🌱 ESG 그래프 */
+let ectx = document.getElementById("esgChart").getContext("2d");
+ectx.fillStyle="lightgreen";
+ectx.fillRect(10,100,30,-40);
+ectx.fillRect(60,100,30,-80);
+ectx.fillRect(110,100,30,-100);
 
 </script>
 
